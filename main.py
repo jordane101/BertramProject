@@ -1,16 +1,23 @@
-# This is a sample Python script.
+"""
+Created on 2/7/2024
+@author: Eli Jordan
+"""
+import pandas as pd
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+employees = pd.read_csv('coffee_history.csv')
 
+print(employees)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    ready = False
+    while not ready:
+        # gather information loop
+        read = input("Who is going to the coffee shop? (ALL for everyone):")
+        match read:
+            case "ALL":
+                ready = True
+                print("All the coffee")
+            case _ :
+                print("Invalid input")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
