@@ -1,8 +1,8 @@
-Employee,Favorite Drink,Salary,Dollars Spent
-Bob,Black,85000,25
-Jeremy,Mocha,118000,15
-Kaitlyn,Frappe,84000,8
-Thomas,Cappuccino,90000,27
-Sarah,Americano,93000,3
-Ryan,Tea,104000,45
-Dan,Soda,97000,16
+Employee,Favorite Drink,Salary,Dollars Spent,Debt
+Bob,Black,85000,25,"(Jeremy,3),(Thomas,6)"
+Jeremy,Mocha,118000,15,
+Kaitlyn,Frappe,84000,16,
+Thomas,Cappuccino,90000,27,
+Sarah,Americano,93000,3,"(Ryan,4)"
+Ryan,Tea,104000,45,
+Dan,Soda,97000,16,
