@@ -1,3 +1,6 @@
+
+<body>
+
 <h1 style="color: saddlebrown">Whose Turn is it Anyway?</h1>
 
 <h2>Steps to run the program</h2>
@@ -9,6 +12,11 @@
     <li>Returns the name of the person who should pay for the coffee run.</li>
 </ol>
 
+<h2>Using the Program</h2>
+<ol>
+    <li></li>
+</ol>
+
 
 <h2>Assumptions</h2>
 <ul>
@@ -17,3 +25,5 @@
     <li>Not everyone is in office/ goes to the coffee shop every day</li>
     <li>Data is tracked in csv files</li>
 </ul>
+
+</body>
