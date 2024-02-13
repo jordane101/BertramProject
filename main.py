@@ -14,7 +14,9 @@ class App(ctk.CTk):
     # class to contain CTk app
     def __init__(self, file_path:str = "coffee_history.csv"):
         super().__init__()
+        # open csv as dataframe
         self.employees_df = pd.read_csv(file_path)
+        # window setup
         self.geometry("400x300")
         self.title("Whose Turn is it Anyways?")
         self.resizable(False, False)
