@@ -7,13 +7,14 @@ import tkinter as tk
 import customtkinter as ctk
 
 ctk.set_appearance_mode("System")
-_DEBUG = True
+_DEBUG = False
+
 
 class App(ctk.CTk):
-    employees_df = pd.read_csv('coffee_history.csv')
-
-    def __init__(self):
+    # class to contain CTk app
+    def __init__(self, file_path:str = "coffee_history.csv"):
         super().__init__()
+        self.employees_df = pd.read_csv(file_path)
         self.geometry("400x300")
         self.title("Whose Turn is it Anyways?")
         self.resizable(False, False)
@@ -21,19 +22,25 @@ class App(ctk.CTk):
         self.grid_columnconfigure(2, weight=1)
 
         self.instantiate_listbox()
-
+        # add names to listbox
         self.employee_chosen_output = ctk.CTkTextbox(self)
         self.employee_chosen_output.grid(column=0, row=1, sticky="")
 
-        self.employees_selected = []
+        # create button
         self.button = ctk.CTkButton(self, text="Stir the Pot", command=self.button_callback)
         self.button.grid(column=1, row=1, sticky="ew")
 
+        # reference for employee selected
         self.selected_employee = ""
+
     def button_callback(self):
+        # clear textbox
         self.employee_chosen_output.delete("0.0", ctk.END)
+        # find employee with least spent
         self.selected_employee = self.employees_df[self.employees_df["Dollars Spent"] == min(self.employees_df.loc[list(self.listbox.curselection()), "Dollars Spent"])].loc[:, "Employee"].values[0]
+        # update text box
         self.employee_chosen_output.insert("0.0", self.selected_employee)
+        # sum employees' coffee order
         self.sum_coffee_order(list(self.listbox.curselection()))
 
     def instantiate_listbox(self):
@@ -67,14 +74,14 @@ class App(ctk.CTk):
             coffee_total += coffee_prices[coffee]
         if _DEBUG:
             print(coffee_total)
+        # update selected employees spent total
         self.employees_df.loc[self.employees_df[self.employees_df["Employee"] == self.selected_employee].index.values[0], "Dollars Spent"] += coffee_total
         if _DEBUG:
             print(self.employees_df.loc[self.employees_df[self.employees_df["Employee"] == self.selected_employee].index.values[0], "Dollars Spent"])
+        # write updated dataframe to csv file
         self.employees_df.to_csv("coffee_history.csv", index=False)
 
 
 if __name__ == '__main__':
     app = App()
     app.mainloop()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
