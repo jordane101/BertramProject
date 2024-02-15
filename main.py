@@ -51,13 +51,7 @@ class App(ctk.CTk):
         # sum employees' coffee order
         self.sum_coffee_order(list(self.listbox.curselection()))
 
-    def write_to_textbox(self, text:str):
-        # # clear textbox
-        # self.employee_chosen_output.configure(state=ctk.NORMAL)
-        # self.employee_chosen_output.delete("0.0", ctk.END)
-        # # update text
-        # self.employee_chosen_output.insert("0.0", text)
-        # self.employee_chosen_output.configure(state=ctk.DISABLED)
+    def write_to_textbox(self, text: str):
         self.employee_chosen_output.configure(text=text)
 
     def instantiate_listbox(self):
